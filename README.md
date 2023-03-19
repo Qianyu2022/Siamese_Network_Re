@@ -1,10 +1,6 @@
 # Siamese Networks for One-Shot Learning
-Forked from the link https://github.com/kevinzakka/one-shot-siamese
-But customized to be excuted on current environment and different datasets
-
-<p align="center">
- <img src="./plots/loss.png" alt="Drawing", width=80%>
-</p>
+Forked from the link https://github.com/kevinzakka/one-shot-siamese <br/>
+But customized to be executed on current environment and different datasets
 
 ## Paper Modifications
 
