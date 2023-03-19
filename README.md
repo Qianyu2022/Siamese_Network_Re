@@ -1,4 +1,6 @@
 # Siamese Networks for One-Shot Learning
+Forked from the link https://github.com/kevinzakka/one-shot-siamese
+But customized to be excuted on current environment and different datasets
 
 <p align="center">
  <img src="./plots/loss.png" alt="Drawing", width=80%>
@@ -15,28 +17,15 @@ I've done some slight modifications to the paper to eliminate variables while I 
 
 ## Omniglot Dataset
 
-<p align="center">
- <img src="./plots/omniglot.png" alt="Drawing", width=30%> <img src="./plots/augmented.png" alt="Drawing", width=30%>
- <img src="./plots/augmented_v2.png" alt="Drawing", width=30%>
-</p>
+Please use the dataset in the `Omniglot` folder
 
-Execute the following commands
+* Process the data using `data_prep_efficient.ipynb`
 
-* Download the data using `run.sh`
-    * `chmod +x run.sh`
-    * `./run.sh`
-* Process the data using `data_prep.ipynb`
+## Tips for excuting the codes for training Siamese Network
 
-Then, you can load the dataset using:
-
-```python
-from data_loader import *
-
-# batch size of 32 with data augmentation
-train_loader, valid_loader = get_train_valid_loader(data_dir, 32, True)
-
-for idx, (x, y) in enumerate(train_loader):
-    # do something
-```
+- All the needed hyperparameters including the dataset folder path are predefined in the `config.py` as default value
+- The training is emulated on GPU, so please make sure the compatible CUDA and cuDNN are installed
+- Current configurations are CUDA(11.7), Python(3.9), PyTorch(2.0) in the virtual environment `GPU_AmpStruc`
+- If you want to switch to the tensorflow GPU, please change CUDA version in the CUDA_PATH from 11.7 to 11.2
 
 Checkout [Playground.ipynb](https://github.com/kevinzakka/siamese-network/blob/master/Playground.ipynb) for a minimal working example.
