@@ -22,7 +22,7 @@ def main(config):
     kwargs = {}
     if config.use_gpu:
         torch.cuda.manual_seed(config.random_seed)
-        kwargs = {'num_workers': 1, 'pin_memory': False}
+        kwargs = {'num_workers': 1, 'pin_memory': True}
     if config.is_train:
         data_loader = get_train_valid_loader(
             config.data_dir, config.batch_size,
