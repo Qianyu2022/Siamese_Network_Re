@@ -25,7 +25,7 @@ def get_train_valid_loader(data_dir,
                            shuffle=False,
                            seed=0,
                            num_workers=4,
-                           pin_memory=False):
+                           pin_memory=True):
     """
     Utility function for loading and returning train and valid multi-process
     iterators over the Omniglot dataset.
