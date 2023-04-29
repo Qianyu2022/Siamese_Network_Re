@@ -523,48 +523,39 @@ def main(config):
             **kwargs
         )
 
-    # sample 3 layer wise hyperparams if first time training
-    # if config.is_train and not config.resume:
-    #     print("[*] Sampling layer hyperparameters.")
-    #
-        layer_hyperparams = {
+
+    layer_hyperparams = {
             'layer_init_lrs': [],
             'layer_end_momentums': [],
             'layer_l2_regs': []
         }
-        for i in range(6):
+    for i in range(6):
             # sample
-            lr = random.uniform(1e-4, 1e-1)
-            mom = random.uniform(0, 1)
-            reg = random.uniform(0, 0.1)
+        lr = random.uniform(1e-4, 1e-1)
+        mom = random.uniform(0, 1)
+        reg = random.uniform(0, 0.1)
     #
-    #         # store
-    #         layer_hyperparams['layer_init_lrs'].append(lr)
-    #         layer_hyperparams['layer_end_momentums'].append(mom)
-    #         layer_hyperparams['layer_l2_regs'].append(reg)
-    #     try:
-    #         save_config(config, layer_hyperparams)
-    #     except ValueError:
-    #         print(
-    #             "[!] Samples already exist. Either change the model number,",
-    #             "or delete the json file and rerun.",
-    #             sep=' '
-    #         )
-    #         return
-    # # else load it from config file
-    # else:
-    #     try:
-    #         layer_hyperparams = load_config(config)
-    #     except FileNotFoundError:
-    #         print("[!] No previously saved config. Set resume to False.")
-    #         return
+            # store
+        layer_hyperparams['layer_init_lrs'].append(lr)
+        layer_hyperparams['layer_end_momentums'].append(mom)
+        layer_hyperparams['layer_l2_regs'].append(reg)
+    try:
+        save_config(config, layer_hyperparams)
+    except ValueError:
+        print(
+                "[!] Samples already exist. Either change the model number,",
+                "or delete the json file and rerun.",
+                sep=' '
+            )
+    return
+
 
     trainer = Trainer(config, data_loader, layer_hyperparams)
 
     if config.is_train:
-        trainer.train()
+            trainer.train()
     else:
-        trainer.test()
+            trainer.test()
 
 
 if __name__ == '__main__':
